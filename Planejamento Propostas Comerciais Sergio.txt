@@ -1,0 +1,118 @@
+PLANEJAMENTO
+
+	PORPOSTAS: (Sistema de propostas comerciais)
+
+	1. O que o porjeto precisa fazer?
+		1.1. Produtos e Serviços
+			- Listar os produtos/serviços
+			- Pegar informações de um produto/serviço
+			- Pegar informações de um determinado tipo de produto/serviço
+			- Pegar informações de uma determinada forma de comercialização
+			- Inserir um produto/serviço
+			- Atualizar um produto/serviço
+			- Deletar um produto/serviço
+			
+		1.2. Clientes
+			- Listar os clientes
+			- Pegar informações de um cliente
+			- Pegar informações de um determinado tipo de pessoa
+			- Inserir um cliente
+			- Atualizar um cliente
+			- Deletar um cliente
+		
+		1.3. Propostas
+			- Listar as propostas
+			- Pegar informações de uma proposta
+			- Pegar informações de um cliente na proposta
+			- Inserir uma proposta
+			- Atualizar uma proposta
+			- Deletar uma proposta
+		
+		1.4. Itens da Proposta (Produto e/ou Serviços)
+			- Listar os itens da proposta
+			- Pegar informações dos itens da proposta
+			- Pegar informações de itens para um determinado produto/serviço
+			- Inserir item na proposta
+			- Atualizar um item da proposta
+			- Deletar um item da proposta
+			
+			
+	2. Qual a estrutura de dados?
+		2.1. Produtos e Serviços
+			- Local para armazenar os produtos/serviços
+				-- id
+				-- descricao
+				-- descritivo
+				-- valorVenda			(valor de venda)
+				-- tipos				(Tipos de serviços -> SaaS - Locação - Serviço Técnico - Produto)
+				-- formaComercializacao	(Venda Direta - Mensalidade - Trimestralidade, Semestralidade - Anualidade)
+		
+		2.2. Clientes
+			- Local para armazenar os clientes
+				-- id
+				-- nome
+				-- tipoPessoa	(Física - Jurídica)
+				-- cpf_cnpj
+				-- cep
+				-- endereco
+				-- numero
+				-- complemento
+				-- bairro
+				-- cidade
+				-- estado
+				-- pais
+
+		2.3. Propostas
+			- Local para armazenar as propostas
+				-- id
+				-- codigo
+				-- assunto
+				-- data
+				-- dataValidade
+				-- idCliente
+				
+		2.4 - Itens da Proposta
+			- Local para armazenar os itens da proposta
+				-- id
+				-- idProposta
+				-- idProduto
+				-- quantidade
+				-- valorUnitario
+				-- desconto
+				-- valorTotal	((quantidade * valorUnitario) - desconto)
+				
+
+	3. Quais os endpoints?
+		3.1. Produtos e Serviços
+			-- (METODO) /url (PARÂMETROS)
+			-- (GET) /api/product
+			-- (GET) /api/product/123		(Buscar um produto com o seu id)
+			-- (POST) /api/product 			(parametros -> nome produto, descritivo, tipos de serviços, forma de comercialização)
+			-- (PUT) /api/product/123 		(parametros -> nome produto, descritivo, tipos de serviços, forma de comercialização)
+			-- (DELETE) /api/product/123	(id)
+			
+		3.2. Clientes
+			-- (METODO) /url (PARÂMETROS)
+			-- (GET) /api/client
+			-- (GET) /api/client/123		(Buscar um cliente com o seu id)
+			-- (POST) /api/client 			(parametros -> nome, CPF / CNPJ, tipo de pessoa, cidade, estado)
+			-- (PUT) /api/client/123 		(parametros -> nome, CPF / CNPJ, tipo de pessoa, cidade, estado)
+			-- (DELETE) /api/client/123		(id)
+
+		3.3. Propostas
+			-- (METODO) /url (PARÂMETROS)
+			-- (GET) /api/proposal
+			-- (GET) /api/proposal/123		(Buscar um cliente com o seu id)
+			-- (POST) /api/proposal 		(parametros -> codigo, assunto, data, data de validade, cliente)
+			-- (PUT) /api/proposal/123 		(parametros -> codigo, assunto, data, data de validade, cliente)
+			-- (DELETE) /api/proposal/123	(id)
+			
+				
+		3.4. Itens da Proposta
+			-- (METODO) /url (PARÂMETROS)
+			-- (GET) /api/proposalitens
+			-- (GET) /api/proposalitens/123		(Buscar um cliente com o seu id)
+			-- (POST) /api/proposalitens 		(parametros -> produto)
+			-- (PUT) /api/proposalitens/123 	(parametros -> produto)
+			-- (DELETE) /api/proposalitens/123	(id)
+			
